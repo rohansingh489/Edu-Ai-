@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+  }
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-blue-500;
+  }
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply rounded-full bg-slate-300 hover:bg-slate-400; }
+}
+
+@layer components {
+  /* ── Cards ── */
+  .card {
+    @apply rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow duration-200;
+  }
+  .card-hover {
+    @apply card hover:shadow-md hover:-translate-y-0.5 transition-all duration-200;
+  }
+  .card-glass {
+    @apply rounded-2xl border border-slate-700/60 bg-slate-800/90 p-5 shadow-sm backdrop-blur-md;
+  }
+
+  /* Browser autofill styling to ensure text is always visible */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-box-shadow: 0 0 0 1000px #0f172a inset !important;
+    box-shadow: 0 0 0 1000px #0f172a inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+    caret-color: #60a5fa !important;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-60 active:scale-[0.97] select-none;
+  }
+  .btn-primary {
+    @apply btn bg-navy-900 text-white hover:bg-navy-700 shadow-sm;
+  }
+  .btn-accent {
+    @apply btn bg-blue-600 text-white hover:bg-blue-500 shadow-sm hover:shadow-blue-200 hover:shadow-md;
+  }
+  .btn-outline {
+    @apply btn border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-sm;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-500 shadow-sm;
+  }
+  .btn-success {
+    @apply btn bg-emerald-600 text-white hover:bg-emerald-500 shadow-sm;
+  }
+  .btn-ghost {
+    @apply btn text-slate-600 hover:bg-slate-100 hover:text-slate-800;
+  }
+  .btn-sm  { @apply px-3 py-1.5 text-xs rounded-lg; }
+  .btn-lg  { @apply px-6 py-3 text-base rounded-xl; }
+
+  /* ── Form inputs ── */
+  .input {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition-all duration-150
+           placeholder:text-slate-400
+           hover:border-slate-300
+           focus:border-blue-400 focus:ring-2 focus:ring-blue-100;
+  }
+  .input-lg {
+    @apply input py-3 text-base;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500;
+  }
+
+  /* ── Badges ── */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+  .badge-lg {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold;
+  }
+
+  /* ── Table ── */
+  .th {
+    @apply whitespace-nowrap px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500;
+  }
+  .td {
+    @apply px-4 py-3 text-sm;
+  }
+
+  /* ── Info/Alert boxes ── */
+  .info-box {
+    @apply rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-800 flex items-start gap-2;
+  }
+  .success-box {
+    @apply rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 flex items-start gap-2;
+  }
+  .warning-box {
+    @apply rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 flex items-start gap-2;
+  }
+}
+
+@layer utilities {
+  .animate-fadeUp {
+    animation: fadeUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-fadeIn {
+    animation: fadeIn 0.2s ease both;
+  }
+  .animate-slideRight {
+    animation: slideRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes slideRight {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .text-balance { text-wrap: balance; }
+  .grid-auto-fill-280 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .section-title {
+    @apply text-lg font-bold text-navy-900 mb-4;
+  }
+  .divider {
+    @apply my-4 border-t border-slate-100;
+  }
+}
